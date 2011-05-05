@@ -50,6 +50,7 @@ class App_Controller_Invitation extends Fz_Controller {
         $this->secure ();
         
         print_r('TODO: invitation posted');
+        echo ' to : '.$_POST['name'].' at '.$_POST['to'];
    }
     
     /**

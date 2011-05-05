@@ -6,11 +6,10 @@
     <input type="text" class="to" name="to" value=""/>
   </p>
   <p>
-    <label for="msg"><?php echo __('Message (file url will automatically be added)')?>:</label>
-    <textarea cols="80" rows="10" name="msg" value="<?php echo params ('msg') ?>"></textarea>
+    <label for="name"><?php echo __('Name')?>:</label>
+    <textarea cols="80" rows="10" name="name" value="<?php echo params ('msg') ?>"></textarea>
   </p>
   <p>
-    <a href="#" class="open-email-client" target="_blank"><?php echo __('Open in my email client') ?></a>
     <script type="text/javascript">
       $(document).ready (function () {
         $('.open-email-client').click (function (e) {
@@ -19,10 +18,10 @@
       });
     </script>
   </p>
+
   <p class="submit">
     <input type="submit" class="awesome blue large" value="<?php echo __('Send') ?>" />
   </p>
 </form>
-<?php 
-echo $check 
-?>
+<?php echo $check ?>
+           (<?php echo h($user->username) ?>)
