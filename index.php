@@ -223,7 +223,9 @@ fz_dispatch_post ('/:file_hash/delete'          ,'File'        ,'delete');
 
 fz_dispatch_get  ('/:file_hash/extend'          ,'File'        ,'extend');
 
-fz_dispatch_get  ('/:file_hash/invite'          ,'File'        ,'invite');
-fz_dispatch_get  ('/:file_hash/:invitation_hash','File'        ,'invited');
+// Invitation controller
+fz_dispatch_get  ('/:file_hash/invite'          ,'Invitation'  ,'inviteForm');
+fz_dispatch_post ('/:file_hash/invite'          ,'Invitation'  ,'invite');
+fz_dispatch_get  ('/file/:invitation_hash'      ,'Invitation'  ,'go');
 
 run ();
