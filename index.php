@@ -208,6 +208,11 @@ fz_dispatch_get  ('/download.php'               ,'File'        ,'downloadFzOne')
 fz_dispatch_get  ('/help'                       ,'Help'        ,'index');
 fz_dispatch_get  ('/help/:page'                 ,'Help'        ,'showPage');
 
+// Invitation controller
+fz_dispatch_get  ('/invite'                                ,'Invitation' ,'inviteForm');
+fz_dispatch_post ('/invite'                                ,'Invitation' ,'invite');
+fz_dispatch_get  ('/invitation/:invitation_hash' ,'Invitation' ,'go');
+
 // Download controller
 fz_dispatch_get  ('/:file_hash'                 ,'File'        ,'preview');
 fz_dispatch_get  ('/:file_hash/view'            ,'File'        ,'view');
@@ -222,10 +227,5 @@ fz_dispatch_get  ('/:file_hash/delete'          ,'File'        ,'confirmDelete')
 fz_dispatch_post ('/:file_hash/delete'          ,'File'        ,'delete');
 
 fz_dispatch_get  ('/:file_hash/extend'          ,'File'        ,'extend');
-
-// Invitation controller
-fz_dispatch_get  ('/:file_hash/invite'          ,'Invitation'  ,'inviteForm');
-fz_dispatch_post ('/:file_hash/invite'          ,'Invitation'  ,'invite');
-fz_dispatch_get  ('/file/:invitation_hash'      ,'Invitation'  ,'go');
 
 run ();
