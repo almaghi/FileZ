@@ -15,16 +15,7 @@
 <script>
   $(document).ready(function() {
     // create the datepickers
-    $('.datepicker').datepicker({
-       //showOn: 'button', show on button? 
-       //buttonImageOnly: true, buttonImage: 'images/icon_cal.png'
-       //buttonText: "select",
-       //altField: 'input#date', altFormat: 'yy-mm-dd',
-        onSelect: function(dateText, inst) {
-            // do we extend immediatly on select?
-            //alert(dateText);
-        }
-    });
+    $('.datepicker').datepicker({});
   });
 /* TODO css for date picker */
 </script>
@@ -43,11 +34,16 @@
                  $file->getAvailableFrom ()->toString ('d') : $file->getAvailableFrom ()->toString ('d MMMM'),
       'to' =>  '<b>'.$file->getAvailableUntil ()->toString ('d MMMM').'</b>')) // FIXME I18N ?>
       <?php if ($file->extends_count < fz_config_get ('app', 'max_extend_count')): ?>
-        <?php // TODO show/hide datepicker, extend accordingly, etc. ?>
-        <a href="#" onclick='$("#file<?php echo $file->id ?>").toggle("slow");' class="extend" title="<?php echo __('Extend the file lifetime') ?>">
+
+        <?php // TODO extend accordingly, etc. ?>
+        <a href="#" onclick='$("#file<?php echo $file->id ?>").toggle();' class="extend" title="<?php echo __('Extend the file lifetime') ?>">
             <?php echo __('Extend the file lifetime') ?>
         </a>
-        <span type="text" class="datepicker" id="file<?php echo $file->id ?>" style="display:none;"></span>
+        <div id="file<?php echo $file->id ?>" style="display:none;">
+        <?php echo __('Available until:') ?> <input class="datepicker" type="text"/>
+        <input type="submit" class="awesome blue large" value="<?php echo __('Send') ?>"/>
+        </div>
+
       <?php endif ?>
     </td>
     <td><?php echo $file->getReadableFileSize () ?></td>
