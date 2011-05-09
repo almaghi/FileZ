@@ -68,3 +68,15 @@ table.data td {
 	border: 1px solid #DDD;
 	font-size: 0.8em;
 }
+
+a.extend {
+  padding-left: 20px;
+  line-height: 16px;
+  height: 16px;
+  display: inline-block;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+a.extend { background-image: url(../images/icons/add.png); }
+a.extend { text-indent: -5000px; width: 16px; padding: 0; }
