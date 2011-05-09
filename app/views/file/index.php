@@ -16,9 +16,13 @@
 /* TODO css for date picker */
 
   $(document).ready(function() {
-    // create the datepickers
+    // create the datepickers and set its options
     $('.datepicker').datepicker({
-        
+
+        // date selection range
+        maxDate: '+<?php echo fz_config_get ('app', 'max_extend_count') ?>d',
+        minDate: '+1d',
+
         // define an alternative field to receive an alternative date format
         altField: "#alternate",
         // alternative date format (ISO, not localized) to be used in URL
