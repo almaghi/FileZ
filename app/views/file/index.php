@@ -13,12 +13,26 @@
   </tr>
 
 <script>
+/* TODO css for date picker */
+
   $(document).ready(function() {
     // create the datepickers
-    $('.datepicker').datepicker({});
+    $('.datepicker').datepicker({
+        
+        altField: "#alternate",
+        altFormat: 'yy-mm-dd',      
+         //dateFormat: 'yy-mm-dd',
+
+        onSelect: function(dateText, inst) {
+              var file = $(this).attr('name');
+              var link = 'a#'+ file;
+              var originalHref = $(link).attr('href');
+              $(link).attr('href', originalHref+'/'+dateText);  
+            }
+        });
   });
-/* TODO css for date picker */
 </script>
+<input id="alternate" style="display:none" />
 
 <?php foreach ($files as $file): ?>
   <tr>
@@ -36,12 +50,12 @@
       <?php if ($file->extends_count < fz_config_get ('app', 'max_extend_count')): ?>
 
         <?php // TODO extend accordingly, etc. ?>
-        <a href="#" onclick='$("#file<?php echo $file->id ?>").toggle();' class="extend" title="<?php echo __('Extend the file lifetime') ?>">
+        <a href="#" onclick='$("div#file<?php echo $file->id ?>").toggle();' class="extend" title="<?php echo __('Extend the file lifetime') ?>">
             <?php echo __('Extend the file lifetime') ?>
         </a>
         <div id="file<?php echo $file->id ?>" style="display:none;">
-        <?php echo __('Available until:') ?> <input class="datepicker" type="text"/>
-        <input type="submit" class="awesome blue large" value="<?php echo __('Send') ?>"/>
+        <?php echo __('Available until:') ?> <input class="datepicker" name="<?php echo $file->id ?>" type="text"/>
+        <a href="<?php echo $file->getDownloadUrl () ?>/extend/files" id="<?php echo $file->id ?>" class="awesome blue large"><?php echo __('Send') ?></a>
         </div>
 
       <?php endif ?>
