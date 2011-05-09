@@ -12,6 +12,14 @@
     <th><?php echo __('Actions') ?></th>
   </tr>
 
+<script>
+  $(document).ready(function() {
+    // create the datepickers
+    $(".datepicker").datepicker();
+/* TODO css for date picker */
+  });
+</script>
+
 <?php foreach ($files as $file): ?>
   <tr>
     <td><a href="<?php echo $file->getDownloadUrl () ?>"><?php echo h($file->file_name) ?></a></td>
@@ -26,9 +34,11 @@
                  $file->getAvailableFrom ()->toString ('d') : $file->getAvailableFrom ()->toString ('d MMMM'),
       'to' =>  '<b>'.$file->getAvailableUntil ()->toString ('d MMMM').'</b>')) // FIXME I18N ?>
       <?php if ($file->extends_count < fz_config_get ('app', 'max_extend_count')): ?>
-      <a href="<?php echo $file->getDownloadUrl () ?>/extend/files" class="extend" title="<?php echo __('Extend one more day') ?>">
-        <?php echo __('Extend one more day') ?>
-      </a>
+        <?php // TODO show/hide datepicker, extend accordingly, etc. ?>
+        <a href="#" onclick='$("#file<?php echo $file->id ?>").toggle("slow");' class="extend" title="<?php echo __('Extend the file lifetime') ?>">
+            <?php echo __('Extend the file lifetime') ?>
+        </a>
+        <span type="text" class="datepicker" id="file<?php echo $file->id ?>" style="display:none;"></span>
       <?php endif ?>
     </td>
     <td><?php echo $file->getReadableFileSize () ?></td>
