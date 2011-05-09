@@ -86,7 +86,7 @@ class App_Controller_File extends Fz_Controller {
                     $redirect = "/admin/files";
                     break;
                 case "user":
-                    $redirect = "/admin/users/".$file->getUploader ()->getId();
+                    $redirect = "/admin/users/".$file->getUploader ()->id;
                     break;
                 default:
                     $redirect = "/";
