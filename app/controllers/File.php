@@ -80,7 +80,19 @@ class App_Controller_File extends Fz_Controller {
         else {
             flash (($result ['status'] == 'success' ? 'notification' : 'error'),
                     $result ['statusText']);
-            redirect_to ('/');
+
+            switch (params('redirect')) {
+                case "files":
+                    $redirect = "/admin/files";
+                    break;
+                case "user":
+                    $redirect = "/admin/users/".$file->getUploader ()->getId();
+                    break;
+                default:
+                    $redirect = "/";
+                    break;
+            }
+            redirect_to ($redirect);
         }
     }
 

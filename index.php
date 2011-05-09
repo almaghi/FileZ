@@ -228,8 +228,6 @@ fz_dispatch_get  ('/:file_hash/delete'          ,'File'        ,'confirmDelete')
 fz_dispatch_post ('/:file_hash/delete'          ,'File'        ,'delete');
 
 fz_dispatch_get  ('/:file_hash/extend'          ,'File'        ,'extend');
-
-fz_dispatch_get  ('/:file_hash/invite'          ,'File'        ,'invite');
-fz_dispatch_get  ('/:file_hash/:invitation_hash','File'        ,'invited');
+fz_dispatch_get  ('/:file_hash/extend/:redirect','File'        ,'extend');
 
 run ();
