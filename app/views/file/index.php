@@ -15,9 +15,18 @@
 <script>
   $(document).ready(function() {
     // create the datepickers
-    $(".datepicker").datepicker();
-/* TODO css for date picker */
+    $('.datepicker').datepicker({
+       //showOn: 'button', show on button? 
+       //buttonImageOnly: true, buttonImage: 'images/icon_cal.png'
+       //buttonText: "select",
+       //altField: 'input#date', altFormat: 'yy-mm-dd',
+        onSelect: function(dateText, inst) {
+            // do we extend immediatly on select?
+            //alert(dateText);
+        }
+    });
   });
+/* TODO css for date picker */
 </script>
 
 <?php foreach ($files as $file): ?>
