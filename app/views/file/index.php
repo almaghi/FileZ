@@ -19,15 +19,19 @@
     // create the datepickers
     $('.datepicker').datepicker({
         
+        // define an alternative field to receive an alternative date format
         altField: "#alternate",
-        altFormat: 'yy-mm-dd',      
-         //dateFormat: 'yy-mm-dd',
+        // alternative date format (ISO, not localized) to be used in URL
+        altFormat: 'yy-mm-dd',
 
+        // On date selection, append the submission link with the date in ISO format (/:fileHash/extend/:date)
         onSelect: function(dateText, inst) {
-              var file = $(this).attr('name');
-              var link = 'a#'+ file;
+              var fileId = $(this).attr('name');
+              // This is the link on the submit button
+              var link = 'a#'+ fileId;
               var originalHref = $(link).attr('href');
-              $(link).attr('href', originalHref+'/'+dateText);  
+              // append the link with the date in ISO format
+              $(link).attr('href', originalHref+'/'+$("#alternate").val());
             }
         });
   });

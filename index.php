@@ -229,5 +229,6 @@ fz_dispatch_post ('/:file_hash/delete'          ,'File'        ,'delete');
 
 fz_dispatch_get  ('/:file_hash/extend'          ,'File'        ,'extend');
 fz_dispatch_get  ('/:file_hash/extend/:redirect','File'        ,'extend');
+fz_dispatch_get  ('/:file_hash/extend/:redirect/:date','File'        ,'extend');
 
 run ();
