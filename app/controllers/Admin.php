@@ -48,6 +48,19 @@ class App_Controller_Admin extends Fz_Controller {
     }
 
     /**
+     * Action called to manage the invitations
+     * List the invitations.
+     */
+    public function invitationsAction () {
+        $this->secure ('admin');
+	set ('config', option('fz_config')); # same as:  set ('config', fz_config_get());
+        return html ('admin/invitations.php');
+        //TODO
+    }
+
+
+
+    /**
      * Action called to clean expired files and send mail to those who will be
      * in the next 2 days. This action is meant to be called from a cron script.
      * It should not respond any output except PHP execution errors. Everything

@@ -35,6 +35,7 @@
           <li><a href="<?php echo url_for ('admin') ?>"><?php echo __('Dashboard') ?></a></li>
           <li><a href="<?php echo url_for ('admin/users') ?>"><?php echo __('Users') ?></a></li>
           <li><a href="<?php echo url_for ('admin/files') ?>"><?php echo __('Files') ?></a></li>
+          <li><a href="<?php echo url_for ('admin/invitations') ?>"><?php echo __('Invitations') ?></a></li>
           <li><a href="<?php echo url_for ('admin/config') ?>"><?php echo __('Settings') ?></a></li>
         </ul>
       </nav>

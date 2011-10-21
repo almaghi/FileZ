@@ -24,8 +24,11 @@
       <?php if (isset ($fz_user)): ?>
         <p id="auth-box">
         <?php if ( $fz_user->is_admin ): ?>
+          <a href="<?php echo url_for ('/invite') ?>" title="<?php echo __('Invite a contact to upload') ?>"><?php echo __('Invite a contact to upload') ?></a> | 
+        <?php endif ?>
+        <?php if ( $fz_user->is_admin ): ?>
           <a href="<?php echo url_for ('/admin') ?>" title="<?php echo __('Administration') ?>"><?php echo __('Administration') ?></a> | 
-       <?php endif ?>
+        <?php endif ?>
           <?php echo $fz_user->email ?> |
           <a id="logout" href="<?php echo url_for ('/logout') ?>" title="<?php echo __('Log out') ?>">&nbsp;</a>
         </p>

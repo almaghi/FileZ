@@ -215,8 +215,8 @@ fz_dispatch_get  ('/help'                       ,'Help'        ,'index');
 fz_dispatch_get  ('/help/:page'                 ,'Help'        ,'showPage');
 
 // Invitation controller
-fz_dispatch_get  ('/invite'                                ,'Invitation' ,'inviteForm');
-fz_dispatch_post ('/invite'                                ,'Invitation' ,'invite');
+fz_dispatch_get  ('/invite'                     ,'Invitation' ,'inviteForm');
+fz_dispatch_post ('/invite'                     ,'Invitation' ,'invite');
 fz_dispatch_get  ('/invitation/:invitation_hash' ,'Invitation' ,'go');
 
 // Download controller
