@@ -1,44 +1,31 @@
 <?php
 
-/**
- * @file
- * Front to the FileZ application. This file loads Zend, Limonade and define the URL schema.
+/** 
+ * Front to the FileZ application. 
  * 
- * This file loads Zend, 
- * which autoloads Fz_* classes in lib/ dir and App_Model_* & App_Controller_* classes in app/ dir, 
- * configure and loads Limonade PHP framework, 
- * configure FileZ and dispatch the user according to the Url Schema. 
+ *   Load Zend, configure Limonade, dispatch and run.
+ *
+ *   This file loads Zend, which autoloads Fz_* classes in lib/ dir and App_Model_* & App_Controller_* classes in app/ dir, 
+ *     configures and loads Limonade PHP framework, 
+ *     configures FileZ and dispatch the user according to the Url Schema. 
+ *
+ * == About FileZ ==
+ *
+ * Filez has been developed around the Model–view–controller pattern thanks to the Limonade micro framework.
+ *
+ * Limonade micro framework provide the glue between the controllers and views : Routes declarations * Request handler/dispatcher (index.php) * and many action helpers
+ *
+ * - Domain logic is implemented in 'app/model/DOMAIN_OBJECT.php' files.
+ *
+ * - Controllers & actions reside in 'app/controller/CONTROLLER_NAME.php' files and Fz_Controller contain a set of functions (actions).
+ *
+ * - Views are raw php files stored in 'app/view/CONTROLLER_NAME/ACTION_NAME.php' 
+ * Static files are stored in the 'resources' directory.
+ * 
+ * == Copyright ==
  *
  * All FileZ code is released under the GNU General Public License.
  * See COPYING and LICENSE in doc/ directory.
- * 
- * @package FileZ
- * -------------
- * @mainpage
- * <center>
- * See also: <a href="http://gpl.univ-avignon.fr/filez">gpl.univ-avignon.fr/FileZ</a> - <a href="https://github.com/UAPV/FileZ">README, issues & wiki on github</a>
- * </center>
- *
- * @htmlonly
- * <style type="text/css">h2{position: relative;left: -15px;font-size: 140%;}</style>
- * @endhtmlonly
- *
- * @section Model–view–controller
- *
- * Filez has been developed around the MVC pattern thanks to the Limonade micro framework.
- *
- * Limonade micro framework provide the glue between the controllers and views : * Routes declarations * Request handler/dispatcher (index.php) * and many action helpers
- * - Domain logic is implemented in 'app/model/DOMAIN_OBJECT.php' files.
- * - Controllers & actions reside in 'app/controller/CONTROLLER_NAME.php' files and contain a set of functions (actions). Fz_Controller
- * - Views are raw php files stored in 'app/view/CONTROLLER_NAME/ACTION_NAME.php' Static files are stored in the 'resource' directory.
- * 
- * See also <a href="https://github.com/UAPV/FileZ/blob/master/doc/README.DEV.markdown">doc/README.DEV.markdown</a>
- * 
- * @section About
- * 
- * - See <a href="http://gpl.univ-avignon.fr">gpl.univ-avignon.fr</a> for more information
- *
- * @section Copyright
  * 
  * Copyright 2010 Université d'Avignon et des Pays de Vaucluse, Arnaud Didry and others.
  * 
@@ -87,7 +74,7 @@ function configure() {
 }
 
 /**
- * configuring Filez
+ * configuring Filez before each request
  */
 function before () {
 
@@ -178,6 +165,8 @@ if (fz_config_load (dirname(__FILE__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEP
 // Main controller
 fz_dispatch ('/'                                ,'Main'        ,'index');
 
+fz_dispatch_post ('/visitor-upload'             ,'Visitor'     ,'start');
+
 // Upload controller
 fz_dispatch_post ('/upload'                     ,'Upload'      ,'start');
 fz_dispatch_get  ('/upload/progress/:upload_id' ,'Upload'      ,'getProgress');
@@ -197,7 +186,6 @@ fz_dispatch_post ('/admin/users/:id/edit'       ,'User'        ,'update');
 // Backend::Files
 fz_dispatch_get  ('/admin/files'                ,'Admin'       ,'files');
 fz_dispatch_get  ('/admin/config'               ,'Admin'       ,'config');
-fz_dispatch_get  ('/admin/invitations'          ,'Admin'       ,'invitations');
 
 // Backend::CRON
 fz_dispatch_get  ('/admin/checkFiles'           ,'Admin'       ,'checkFiles');
@@ -228,8 +216,5 @@ fz_dispatch_get  ('/:file_hash/delete'          ,'File'        ,'confirmDelete')
 fz_dispatch_post ('/:file_hash/delete'          ,'File'        ,'delete');
 
 fz_dispatch_get  ('/:file_hash/extend'          ,'File'        ,'extend');
-
-fz_dispatch_get  ('/:file_hash/invite'          ,'File'        ,'invite');
-fz_dispatch_get  ('/:file_hash/:invitation_hash','File'        ,'invited');
 
 run ();

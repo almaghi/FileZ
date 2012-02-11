@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Description of Fz_User_Factory_Ldap
  */
 class Fz_User_Factory_Ldap extends Fz_User_Factory_Abstract {

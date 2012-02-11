@@ -1,16 +1,8 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Fz_Db_Table_Row_Abstract
+ * Abstract class to represent a row from a table of the database
  */
 abstract class Fz_Db_Table_Row_Abstract {
 

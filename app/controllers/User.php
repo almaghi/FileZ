@@ -1,12 +1,8 @@
 <?php
 
 /**
- * @file
  * This file define the User controller that is used for user administration. 
  * 
- * Long description.
- * 
- * @package FileZ
  */
 
 /**

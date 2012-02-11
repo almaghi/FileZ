@@ -1,12 +1,8 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
+ * Security controller for user authentification with the internal database.
+ *   extends Security_Abstract
  */
 
 class Fz_Controller_Security_Internal extends Fz_Controller_Security_Abstract {

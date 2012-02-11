@@ -1,15 +1,8 @@
 <?php 
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
+ * Manipulate a file informations.
+ *
  * @property boolean $del_notif_sent
  * @property string  $file_name
  * @property int     $file_size

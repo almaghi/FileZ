@@ -2,41 +2,11 @@
 
 /**
  * @file
- * Short description.
+ * Helpers for HTML view.
  * 
- * Long description.
  * 
  * @package FileZ
  */
-
-/**
- *
- * @param string $path
- * @return string Url containing the public path of the project
- */
-function public_url_for ($path) {
-    $args = func_get_args ();
-    $paths = array (option ('base_path'));
-    $paths = array_merge ($paths, $args);
-    return call_user_func_array ('file_path', $paths);
-}
-
-/**
- * Truncate a string in the middle with "[...]"
- * 
- * @param string $str
- * @param integer $size
- * @return string Truncated string
- */
-function truncate_string ($str, $maxSize) {
-    if (($size = strlen ($str)) > $maxSize) {
-        $halfDiff = ($size - $maxSize + 5) / 2;
-        $str = substr ($str, 0, ($size / 2) - ceil ($halfDiff))
-              .'[...]'
-              .substr ($str, ($size / 2) + floor ($halfDiff));
-    }
-    return $str;
-}
 
 
 /**
@@ -76,6 +46,34 @@ function __r($msg, array $subtitutions) {
     return $msg;
 }
 
+/**
+ *
+ * @param string $path
+ * @return string Url containing the public path of the project
+ */
+function public_url_for ($path) {
+    $args = func_get_args ();
+    $paths = array (option ('base_path'));
+    $paths = array_merge ($paths, $args);
+    return call_user_func_array ('file_path', $paths);
+}
+
+/**
+ * Truncate a string in the middle with "[...]"
+ * 
+ * @param string $str
+ * @param integer $size
+ * @return string Truncated string
+ */
+function truncate_string ($str, $maxSize) {
+    if (($size = strlen ($str)) > $maxSize) {
+        $halfDiff = ($size - $maxSize + 5) / 2;
+        $str = substr ($str, 0, ($size / 2) - ceil ($halfDiff))
+              .'[...]'
+              .substr ($str, ($size / 2) + floor ($halfDiff));
+    }
+    return $str;
+}
 
 /**
  * Transform a size in bytes to the shorthand format ('K', 'M', 'G')
@@ -95,7 +93,6 @@ function doc_img_tag ($name) {
     return '<div class="img-block">'
         .'<img src="'.url_for('/').'doc/user/'.option ('locale')->getLanguage ().'/images/'.$name.'" />'
         .'</div>';
-
 }
 
 function get_mimetype_icon_url ($mimetype, $size = 32) {
@@ -115,7 +112,6 @@ function get_mimetype_icon_url ($mimetype, $size = 32) {
     $mimetype = 'gnome-mime-'.$mimetype;
     if (file_exists ($root.$path.$mimetype))
         return $mime_basesir.$mimetype;
-
 }
 
 function check_cron() {

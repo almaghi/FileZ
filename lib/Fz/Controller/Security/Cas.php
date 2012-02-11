@@ -1,12 +1,9 @@
 <?php
 
 /**
- * @file
- * Short description.
+ * Security controller for CAS authentification.
+ *   extends Security_Abstract
  * 
- * Long description.
- * 
- * @package FileZ
  */
 
 class Fz_Controller_Security_Cas extends Fz_Controller_Security_Abstract {

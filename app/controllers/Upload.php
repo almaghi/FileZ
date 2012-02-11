@@ -1,19 +1,11 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
+ * Controller used to upload files and monitor progression
  */
 
 define ('UPLOAD_ERR_QUOTA_EXCEEDED', 99);
 
-/**
- * Controller used to upload files and monitor progression
- */
 class App_Controller_Upload extends Fz_Controller {
 
     /**

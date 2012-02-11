@@ -1,16 +1,8 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Fz_Db
+ * This file handles database requests.
  */
 class Fz_Db {
 

@@ -1,17 +1,10 @@
 <?php
 
 /**
- * @file
- * Short description.
+ * FileZ application controller to secure the application, getting the user profile, etc.
  * 
- * Long description.
- * 
- * @package FileZ
  */
 
-/**
- * Application controller
- */
 class Fz_Controller {
 
     // Most of this attributes are static in order to share data between controllers

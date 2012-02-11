@@ -1,12 +1,8 @@
 <?php
 
 /**
- * @file
- * Short description.
+ * Fz_Controller_Security_Abstract to get user id, login, logout.
  * 
- * Long description.
- * 
- * @package FileZ
  */
 
 abstract class Fz_Controller_Security_Abstract {
@@ -53,7 +49,7 @@ abstract class Fz_Controller_Security_Abstract {
     }
 
     /**
-     * Return true of the user has already been identified
+     * Return true if the user has already been identified
      *
      * @return boolean
      */

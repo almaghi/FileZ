@@ -1,16 +1,7 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
- * Fz_User_Factory_Abstract
+ * Description of Fz_User_Factory_Abstract
  */
 abstract class Fz_User_Factory_Abstract {
 

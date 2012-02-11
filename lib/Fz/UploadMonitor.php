@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Description of Fz_UploadMonitor
  *
  * @author Arnaud Didry <arnaud.didry@univ-avignon.fr>

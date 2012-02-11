@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Table to manipulate key/value informations about filez, like db_version,
  * last CRON execution, etc.
  */

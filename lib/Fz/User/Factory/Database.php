@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Description of Fz_User_Factory_Database
  *
  * possible options are :

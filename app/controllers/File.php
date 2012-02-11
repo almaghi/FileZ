@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Controller used to do various actions on files (delete, email, download)
  */
 class App_Controller_File extends Fz_Controller {

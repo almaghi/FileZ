@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Controller used to authenticate users
  */
 class App_Controller_Auth extends Fz_Controller {

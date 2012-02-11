@@ -1,15 +1,9 @@
 <?php 
 
 /**
- * @file
- * Short description.
  * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
+ * Manipulate a user informations. 
+ *
  * @password int     $id
  * @password string  $username
  * @password string  $password

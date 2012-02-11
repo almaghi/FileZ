@@ -1,12 +1,9 @@
 <?php
 
 /**
- * @file
  * This file define the admin controller that is used for administratives tasks.
  * 
- * Long description.
  * 
- * @package FileZ
  */
 
 /**

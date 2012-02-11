@@ -1,12 +1,7 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
+ * User table to manipulate users information.
  */
 
 class App_Model_DbTable_User extends Fz_Db_Table_Abstract {

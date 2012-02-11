@@ -1,16 +1,7 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
- * Controller used for administratives tasks
+ * Controller used for installation tasks
  */
 class App_Controller_Install extends Fz_Controller {
 

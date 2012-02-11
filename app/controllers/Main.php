@@ -1,14 +1,13 @@
 <?php
 
 /**
- * @file
+ *
  * This file is the main controller, it secures and print the main page
  * 
  * This file define the main controller that is called while visiting FileZ main page.
  * The controller checks the user, set some parameters 
  * and return the main/index.php view.
  * 
- * @package FileZ
  */
 
 /**

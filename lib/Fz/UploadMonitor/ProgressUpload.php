@@ -1,13 +1,5 @@
 <?php
 
-/**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
 
 /**
  * Description of Fz_UploadMonitor_ProgressUpload

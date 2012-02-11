@@ -1,12 +1,7 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
+ * File table to manipulate uploaded file information.
  */
 
 class App_Model_DbTable_File extends Fz_Db_Table_Abstract {

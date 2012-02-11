@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @file
- * Short description.
- * 
- * Long description.
- * 
- * @package FileZ
- */
-
-/**
  * Controller used to generate user documentation from markdown files
  */
 class App_Controller_Help extends Fz_Controller {

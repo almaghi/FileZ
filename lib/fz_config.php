@@ -1,13 +1,32 @@
 <?php
-
 /**
  * @file
- * Short description.
+ * This file handles FileZ configuration. Load, get, merge and save config.
  * 
- * Long description.
  * 
  * @package FileZ
  */
+
+/**
+ * Get a config var
+ */
+function fz_config_get ($section = null, $var = null, $default = null) {
+    $conf = option ('fz_config');
+    if (! is_array ($conf))
+        return $default;
+
+    if ($section === null) {
+        return $conf;
+    }
+    if (array_key_exists ($section, $conf)) {
+        if ($var === null)
+            return $conf [$section];
+        if (array_key_exists ($var, $conf[$section]))
+            return $conf [$section][$var];
+    }
+
+    return $default;
+}
 
 /**
  * Load config/filez.ini in "option ('fz_config')".
@@ -39,7 +58,6 @@ function fz_config_load ($config_dir) {
  *
  * @param array $user
  * @param array $default
- * @return array
  */
 function merge_config ($user, $default) {
     $result = array ();
@@ -48,27 +66,6 @@ function merge_config ($user, $default) {
             array_merge ($default[$section], $user[$section]) : $default[$section]);
     }
     return $result  + array_diff_key ($user, $default);
-}
-
-/**
- * Return a config var
- */
-function fz_config_get ($section = null, $var = null, $default = null) {
-    $conf = option ('fz_config');
-    if (! is_array ($conf))
-        return $default;
-
-    if ($section === null) {
-        return $conf;
-    }
-    if (array_key_exists ($section, $conf)) {
-        if ($var === null)
-            return $conf [$section];
-        if (array_key_exists ($var, $conf[$section]))
-            return $conf [$section][$var];
-    }
-
-    return $default;
 }
 
 /**
@@ -101,4 +98,3 @@ function fz_serialize_ini_array ($assoc_arr, $has_sections = false) {
 
     return $content;
 }
-
