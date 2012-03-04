@@ -39,7 +39,7 @@ auth_handler_class = Fz_Controller_Security_Internal
 ; Name of the class used to identify the user. Built-in factories are :
 ;  * Fz_User_Factory_Ldap
 ;  * Fz_User_Factory_Database
-user_factory_class = Fz_User_Factory_Ldap
+user_factory_class = Fz_User_Factory_Database
 
 ; Max disk spaced per user. Support shorthand format : M (Mega), G (Giga)
 user_quota = 2G
@@ -75,8 +75,7 @@ bug_report_href = mailto:some-one@somewhere.com ; or http://your-bug-tracker.com
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [db]
 dsn      = "mysql:host=localhost;dbname=filez"
-user     = filez
-password = filez
+db_dialect = "Sqlite"
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -97,7 +96,7 @@ host=smtp.univ-avignon.fr
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 [auth_options]
 ; Parameters for the CAS authentication handler.
-cas_server_host = cas.univ-avignon.fr
+;cas_server_host = cas.univ-avignon.fr
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -106,26 +105,24 @@ cas_server_host = cas.univ-avignon.fr
 [user_factory_options]
 ; Parameters passed to the Ldap user factory.
 ; Available parameters : http://framework.zend.com/manual/en/zend.ldap.api.html
-host = ldap.univ-avignon.fr
-useSsl = false
-baseDn = "ou=people,dc=univ-avignon,dc=fr"
-bindRequiresDn = true
+;host = ldap.univ-avignon.fr
+;useSsl = false
+;baseDn = "ou=people,dc=univ-avignon,dc=fr"
+;bindRequiresDn = true
 
 ; Parameters for the Database user factory
-; db_use_global_conf    = false
-; db_server_dsn         = "mysql:host=localhost;dbname=filez"
-; db_server_user        = filez
-; db_server_password    = filez
-; db_table              = user
-; db_password_field     = password
-; db_username_field     = username
-; db_password_algorithm = SHA1
+db_use_global_conf    = false
+db_server_dsn         = "sqlite:/path_to_FileZ/config/db/filez.db"
+db_table              = user
+db_password_field     = password
+db_username_field     = username
+db_password_algorithm = sha1; use the sha1 function of PHP
 ; Possible algorithm are :
 ;   - MD5         (unsecure)
 ;   - SHA1        (unsecure)
 ;   - PHP Function name ex: "methodName"
 ;   - PHP Static method ex: "ClassName::Method"
-;   - Plain SQL ex: "SHA1(CONCAT(salt, :password))"
+;   - Plain SQL ex: "password=SHA1(CONCAT(salt, :password))"
 
 [user_attributes_translation]
 ; In order to make the application schema agnostic with differents user storage
@@ -136,8 +133,10 @@ bindRequiresDn = true
 ;  * lastname
 ;  * email
 ;  * id
-; Exemple for an Ldap repository :
-firstname = givenname
-lastname  = sn
-email     = mail
-id        = uid
+; Exemple for a sqlite, the translation seems pointless but something
+; in the code insists on having this otherwise it tries to do some
+; field conversion
+email     = email
+firstname = firstname
+lastname  = lastname
+id        = id

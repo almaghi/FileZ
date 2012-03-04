@@ -124,6 +124,20 @@ class App_Controller_File extends Fz_Controller {
     }
 
     /**
+     * Share a file url
+     */
+    public function shareAction () {
+        $this->secure ();
+        $user = $this->getUser ();
+        $file = $this->getFile ();
+        $this->checkOwner ($file, $user);
+        set ('sharing_destinations', fz_config_get('app', 'sharing_destinations'));
+        set ('downloadUrl', $file->getDownloadUrl ());
+        return html ('file/_share_link.php');
+    }
+
+
+    /**
      * Share a file url by mail (show email form only)
      */
     public function emailFormAction () {
@@ -244,7 +258,7 @@ class App_Controller_File extends Fz_Controller {
      * @param App_Model_File $file      File to send
      */
     protected function sendFile (App_Model_File $file, $forceDownload = true) {
-        $mime = file_mime_content_type ($file->getFileName ());
+        $mime = $file->getMimetype();
         header('Content-Type: '.$mime);
         header('Content-Transfer-Encoding: binary');
         header('Expires: 0');

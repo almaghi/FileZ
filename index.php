@@ -36,10 +36,11 @@ define ('FZ_VERSION', '3.0-alpha');
 /**
  * Loading Zend for i18n classes and autoloader
  */
-set_include_path (get_include_path ()
-    .PATH_SEPARATOR.dirname (__FILE__).DIRECTORY_SEPARATOR.'lib'
-    .PATH_SEPARATOR.dirname (__FILE__).DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'pear'
-    .PATH_SEPARATOR.dirname (__FILE__).DIRECTORY_SEPARATOR.'plugins');
+set_include_path (
+ '.'.PATH_SEPARATOR.dirname (FILE).DIRECTORY_SEPARATOR.'lib'
+    .PATH_SEPARATOR.dirname (FILE).DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'pear'
+    .PATH_SEPARATOR.dirname (FILE).DIRECTORY_SEPARATOR.'plugins'
+    .PATH_SEPARATOR.get_include_path ());
 
 require_once 'Zend/Loader/Autoloader.php';
 // Autoloading for Fz_* classes in lib/ dir
@@ -92,8 +93,7 @@ function before () {
     }
 
     // I18N
-    Zend_Locale::setDefault (fz_config_get ('app', 'default_locale', 'fr'));
-    $currentLocale = new Zend_Locale ('auto');
+    $currentLocale = new Zend_Locale (fz_config_get ('app', 'default_locale', 'fr'));
     $translate     = new Zend_Translate ('gettext', option ('root_dir').DIRECTORY_SEPARATOR.'i18n', $currentLocale,
         array('scan' => Zend_Translate::LOCALE_DIRECTORY));
     option ('translate', $translate);
@@ -118,7 +118,9 @@ function before () {
             $db = new PDO (fz_config_get ('db', 'dsn'), fz_config_get ('db', 'user'),
                                                   fz_config_get ('db', 'password'));
             $db->setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $db->exec ('SET NAMES \'utf8\'');
+            if (fz_config_get ('db', 'db_dialect') != "Sqlite") {
+                $db->exec ('SET NAMES \'utf8\'');
+            }
             option ('db_conn', $db);
         } catch (Exception $e) {
             halt (SERVER_ERROR, 'Can\'t connect to the database');
@@ -211,6 +213,7 @@ fz_dispatch_post ('/:file_hash/download'        ,'File'        ,'download'); // 
 // File controller
 fz_dispatch_get  ('/:file_hash/email'           ,'File'        ,'emailForm');
 fz_dispatch_post ('/:file_hash/email'           ,'File'        ,'email');
+fz_dispatch_get  ('/:file_hash/share'           ,'File'        ,'share');
 
 fz_dispatch_get  ('/:file_hash/delete'          ,'File'        ,'confirmDelete');
 fz_dispatch_post ('/:file_hash/delete'          ,'File'        ,'delete');
